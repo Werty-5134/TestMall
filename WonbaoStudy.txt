@@ -1,0 +1,113 @@
+4/1
+private : 私有成员, 在类的内部才可以访问。 
+protected : 类或成员只能由同一个类中的代码访问，或者在从该类派生的类中访问。
+public : 公共成员，完全公开，没有访问限制。 
+internal: 在同一命名空间内可以访问。
+
+4/14
+RequestParam(required=false)不写是null值
+String：适用于少量的字符串操作的情况
+StringBuilder：适用于单线程下在字符缓冲区进行大量操作的情况 （不安全）
+StringBuffer：适用多线程下在字符缓冲区进行大量操作的情况 （安全）
+
+5/8
+Controller, RestController的共同点
+都是用来表示Spring某个类的是否可以接收HTTP请求
+
+Controller, RestController的不同点
+@Controller标识一个Spring类是Spring MVC controller处理器
+@RestController：@RestController是@Controller和@ResponseBody的结合体，两个标注合并起来的作用。
+
+因为 spring 默认scope 是单例模式，这样只会创建一个Action对象。(性能速度提高)
+果你给controller中定义很多的属性 那么单例肯定会出现竞争访问了。
+每次访问都是同一个Action对象，数据不安全。
+而struts2 是要求每次访问都对应不同的Action，
+scope="prototype" 可以保证当有请求的时候都创建一个Action对象
+
+Spring的注解形式：@Repository、@Service、@Controller，它们分别对应存储层Bean，业务层Bean，和展示层Bean。
+
+MVC model表现层 view 视图层 Controller 业务逻辑层
+
+File | Settings | Editor | General | Appearance (IDEA中间线)
+File | Settings | Editor | Live Templates (添加注解作者 时间)
+File | Settings | Editor | General | Auto Import (Java自动导入)
+File | Settings | Editor | Font (字体 Consolas 13 1.2)
+File | Settings | Editor | Inspections | typo (拼写错误提示)
+File | Settings | Editor | Color Scheme | General | Injected language fragment idea取消背景颜色
+File | Settings | Editor | Code Style | Java (设置Tab空格数)
+File | Settings | Keymap | Main menu | Edit | Redo (恢复刚才撤销的内容)
+File | Settings | Editor | Inspections | General | Duplicated code fragment (IDEA取消代码重复提示)
+File | Settings | Editor | Inspections | SQL | No data sources configured 没有配置数据源
+File | Settings | Editor | Inspections | SQL | sql dialect detection   sql方言检测
+
+5/28
+1、继承Thread类，重写run()方法。
+2、实现Runnable接口，重写run()方法。
+Runnable实例对象作为Thread构造方法中的target参数传入，充当线程执行体。这种方式适用于多个线程共享资源的情况。
+3、实现Callable<Class>接口，重写call()方法。
+4、实现java.util.concurrent.ThreadFactory接口，实现newThread(Runnable r)方法，自定义创建细节。
+
+request 请求对象　 类型 javax.servlet.ServletRequest 作用域 Request
+response 响应对象 类型 javax.servlet.SrvletResponse 作用域 Page
+session 会话对象 类型 javax.servlet.http.HttpSession 作用域 Session
+application 应用程序对象 类型 javax.servlet.ServletContext 作用域 Application
+page 页面对象 类型 javax.lang.Object 作用域 Page
+pageContext 页面上下文对象 类型 javax.servlet.jsp.PageContext 作用域 Page
+out 输出对象 类型 javax.servlet.jsp.JspWriter 作用域 Page
+config 配置对象 类型 javax.servlet.ServletConfig 作用域 Page
+exception 例外对象 类型 javax.lang.Throwable 作用域 page
+
+6/21
+展开和折叠方法的快捷键
+
+ctrl + "+or-" 当前的方法
+
+ctrl+shift + "+or-" 所有的方法
+
+7/10
+@Repository和@Controller、@Service、@Component的作用差不多，都是把对象交给spring管理。
+@Repository用在持久层的接口上，这个注解是将接口的一个实现类交给spring管理。
+
+7/12
+用户发起授权（链接，按格式拼装并附带isv服务链接）-》登录账号秘密-》平台响应，并执行重定向（并附带code）-》
+isv服务接收平台请求（重定向链接，通过code置换accessToken及相关信息保存，进入isv服务页面）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
