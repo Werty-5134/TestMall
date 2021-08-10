@@ -1,0 +1,166 @@
+4/1
+private : 私有成员, 在类的内部才可以访问。 
+protected : 类或成员只能由同一个类中的代码访问，或者在从该类派生的类中访问。
+public : 公共成员，完全公开，没有访问限制。 
+internal: 在同一命名空间内可以访问。
+
+4/14
+RequestParam(required=false)不写是null值
+String：适用于少量的字符串操作的情况
+StringBuilder：适用于单线程下在字符缓冲区进行大量操作的情况 （不安全）
+StringBuffer：适用多线程下在字符缓冲区进行大量操作的情况 （安全）
+
+5/8
+Controller, RestController的共同点
+都是用来表示Spring某个类的是否可以接收HTTP请求
+
+Controller, RestController的不同点
+@Controller标识一个Spring类是Spring MVC controller处理器
+@RestController：@RestController是@Controller和@ResponseBody的结合体，两个标注合并起来的作用。
+
+因为 spring 默认scope 是单例模式，这样只会创建一个Action对象。(性能速度提高)
+果你给controller中定义很多的属性 那么单例肯定会出现竞争访问了。
+每次访问都是同一个Action对象，数据不安全。
+而struts2 是要求每次访问都对应不同的Action，
+scope="prototype" 可以保证当有请求的时候都创建一个Action对象
+
+Spring的注解形式：@Repository、@Service、@Controller，它们分别对应存储层Bean，业务层Bean，和展示层Bean。
+
+MVC model表现层 view 视图层 Controller 业务逻辑层
+
+
+5/28
+1、继承Thread类，重写run()方法。
+2、实现Runnable接口，重写run()方法。
+Runnable实例对象作为Thread构造方法中的target参数传入，充当线程执行体。这种方式适用于多个线程共享资源的情况。
+3、实现Callable<Class>接口，重写call()方法。
+4、实现java.util.concurrent.ThreadFactory接口，实现newThread(Runnable r)方法，自定义创建细节。
+
+request 请求对象　 类型 javax.servlet.ServletRequest 作用域 Request
+response 响应对象 类型 javax.servlet.SrvletResponse 作用域 Page
+session 会话对象 类型 javax.servlet.http.HttpSession 作用域 Session
+application 应用程序对象 类型 javax.servlet.ServletContext 作用域 Application
+page 页面对象 类型 javax.lang.Object 作用域 Page
+pageContext 页面上下文对象 类型 javax.servlet.jsp.PageContext 作用域 Page
+out 输出对象 类型 javax.servlet.jsp.JspWriter 作用域 Page
+config 配置对象 类型 javax.servlet.ServletConfig 作用域 Page
+exception 例外对象 类型 javax.lang.Throwable 作用域 page
+
+6/21
+展开和折叠方法的快捷键
+
+ctrl + "+or-" 当前的方法
+
+ctrl+shift + "+or-" 所有的方法
+
+7/10
+@Repository和@Controller、@Service、@Component的作用差不多，都是把对象交给spring管理。
+@Repository用在持久层的接口上，这个注解是将接口的一个实现类交给spring管理。
+
+7/12
+用户发起授权（链接，按格式拼装并附带isv服务链接）-》登录账号秘密-》平台响应，并执行重定向（并附带code）-》
+isv服务接收平台请求（重定向链接，通过code置换accessToken及相关信息保存，进入isv服务页面）
+
+7/22
+itli
+  for (int i = 0; i < tradeOrderInfosJson.size(); i++) {
+            Object o =  tradeOrderInfosJson.get(i);
+
+        }
+iter
+ for (Object o : tradeOrderInfosJson) {
+            
+        }
+itar
+   for (int i = 0; i < array.length; i++) {
+             = array[i];
+            
+        }
+7/23
+打包部署引用为工具类 使用deploy 
+上传maven File是选择要上传的文件 artifact id 是为所要取的名称
+Group 公司名称的缩写 
+
+archetypeCatalog  internal
+
+7/30
+mvn clean package依次执行了clean、resources、compile、testResources、testCompile、test、jar(打包)等７个阶段。
+mvn clean install依次执行了clean、resources、compile、testResources、testCompile、test、jar(打包)、install等8个阶段。
+mvn clean deploy依次执行了clean、resources、compile、testResources、testCompile、test、jar(打包)、install、deploy等９个阶段。
+package命令完成了项目编译、单元测试、打包功能，
+但没有把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库和远程maven私服仓库
+
+install命令完成了项目编译、单元测试、打包功能，
+同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库，但没有布署到远程maven私服仓库
+
+deploy命令完成了项目编译、单元测试、打包功能，
+同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库和远程maven私服仓库
+
+消息队列(KafKa、RabbitMQ、RockeetMQ) 缓存(Redis) 搜索引擎(ES) 集群分布式
+
+8/2
+SpringMVC
+1.用户发送请求,被前端控制器(DispatcherServlet)捕获(捕获请求)
+2.前端控制器进行解析,得到URI,通过URI调用HandlerMapping并获得该Handler配置的所有相关对象(查找Handler)
+3.前端控制器根据得到的Handler,选择合适的HandlerAdapter,提取Request中的模型数据,
+  填入Handler入参,开始执行Handler,最后返回一个ModelAndView对象.(执行Handler)
+4.前端控制器根据返回的ModelAndViewm,选择合适的ViewResolver(选择ViewResolver)
+5.通过ViewResolver结合Model和View来渲染视图,前端控制器将渲染结果返回给客户端(渲染并返回)
+
+8/4
+driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://localhost:3306/usermybatistest?useUnicode=true&characterEncoding=utf8
+username=root
+password=123456
+
+绿色，已经加入控制暂未提交
+红色，未加入版本控制
+蓝色，加入，已提交，有改动
+白色，加入，已提交，无改动
+灰色：版本控制已忽略文件。
+
+Scanner s = new Scanner(System.in);
+System.out.println("请输入一个字符串：");
+String str = s.nextLine();
+System.out.println("字符串的长度是："+str.length());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

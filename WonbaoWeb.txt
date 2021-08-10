@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <!-- 利用spring提供的编码控制过滤器 -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!-- 上下文参数 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+<!--            classpath:com/mapc/conf/application-dao.xml,-->
+<!--            classpath:com/mapc/conf/application-service.xml-->
+        </param-value>
+
+<!--        <param-value>classpath:applicationContext.xml</param-value>-->
+
+    </context-param>
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>
+            classpath:com/mapc/conf/log4j.properties
+        </param-value>
+    </context-param>
+
+    <!-- 配置log4j日志监听器,开启日志记录，容器需要 -->
+    <listener>
+        <listener-class>
+            org.springframework.web.util.Log4jConfigListener
+        </listener-class>
+    </listener>
+
+    <!-- 配置context上下文监听器，创建root容器，和web容器集成在一起 -->
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+    <!-- 在Spring2.0中除了以前的Singleton和Prototype外又加入了三个新的web作用域，
+    分别为request、session和global session，它们的含义和用法请大家参考Spring官方手册的相关章节。
+    如果你想让你的容器里的某个bean拥有其中某种新的web作用域，除了在bean级上配置相应的scope属性，
+    还必须在容器级做一个额外的初始化配置。即在web应用的XML声明文件web.xml中增加下述ContextListener：-->
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+
+    <!-- 配置springmvc控制器，会创建web上下文容器，并且会设置root上下文容器为此容器的父容器  -->
+    <servlet>
+        <servlet-name>controller</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>
+                classpath:com/mapc/conf/application-controller.xml
+            </param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup><!-- web容器启动时就创建该context容器 -->
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>controller</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -1,0 +1,17 @@
+File | Settings | Editor | General | Appearance | Show hard wrap and visual(IDEA中间线)
+File | Settings | Editor | Live Templates (添加注解作者 时间)
+File | Settings | Editor | General | Auto Import (Java自动导入)
+File | Settings | Editor | Font (字体 Consolas 13 1.2)
+File | Settings | Editor | Inspections | typo (拼写错误提示)
+File | Settings | Editor | Color Scheme | General | Injected language fragment idea取消背景颜色
+File | Settings | Editor | Code Style | Java (设置Tab空格数)
+File | Settings | Keymap | Main menu | Edit | Redo (恢复刚才撤销的内容)
+File | Settings | Editor | Inspections | General | Duplicated code fragment (IDEA取消代码重复提示)
+File | Settings | Editor | Inspections | SQL | No data sources configured 没有配置数据源
+File | Settings | Editor | Inspections | SQL | sql dialect detection   sql方言检测
+File | Settings | Editor | Inspections | Java | Declaration redundancy | Unused declaration (参数未使用)
+File | Settings | Appearance & Behavior | System Settings | project (选择在哪里打开)
+File | Settings | Editor | General | Code Completion Case | Sensitive Completion = None （取消大小写敏感）
+ctrl+shift+U 大小写转换
+ctrl+shift+F8 debug窗口
+Alt + F12 打开控制台
